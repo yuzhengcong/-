@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo App</title>
+</head>
+<body>
+  <h1>Todo App</h1>
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="New todo">
+    <button type="submit">Add Todo</button>
+  </form>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const form = document.getElementById('todo-form');
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = input.value;
+      input.value = '';
+      fetch('/todos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      }).then(() => {
+   
+      });
+    });
+  </script>
+</body>
+</html>
